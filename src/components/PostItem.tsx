@@ -5,6 +5,9 @@ interface PostItemProps {
   post: Post
 }
 
+const heartEmoji = '\u2764\uFE0F'
+const chatBubble = '\u{1F4AC}'
+
 export function PostItem({ post }: PostItemProps) {
   return (
     <div className="relative group">
@@ -36,6 +39,15 @@ export function PostItem({ post }: PostItemProps) {
               alt={post.title}
               className="w-full rounded-[20px] object-cover max-h-[150px] mx-auto"
             />
+          </div>
+          <div className="flex justify-around items-center">
+            <span className="cursor-pointer h-10 w-[50px] px-1 flex items-center justify-center font-extrabold rounded-lg">
+              {heartEmoji} <span className="ml-2">{post.like_count ?? 0}</span>
+            </span>
+            <span className="cursor-pointer h-10 w-[50px] px-1 flex items-center justify-center font-extrabold rounded-lg">
+              {chatBubble}{' '}
+              <span className="ml-2">{post.comment_count ?? 0}</span>
+            </span>
           </div>
         </div>
       </Link>
